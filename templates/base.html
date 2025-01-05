@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+        CRM App
+      {% endblock %}
+    </title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #333;
+        color: white;
+        padding: 3px;
+        text-align: center;
+      }
+      .lead {
+        padding: 10px 6px;
+        background-color: #f6f6f6;
+        width: 100%%;
+        margin-bottom: 10px;
+      }
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 5px;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>CRM App</h1>
+      <nav>
+        <a href="{% url 'leads:lead_list' %}" style="color: white; text-decoration: none; margin: 0 10px;">Leads</a>
+      </nav>
+    </header>
+
+    <main>
+      {% block content %}
+
+      {% endblock %}
+    </main>
+
+    <footer>
+      <p>
+        &copy; <span id="date"></span> CRM App
+      </p>
+    </footer>
+    <script>
+      document.getElementById('date').innerHTML = new Date().getFullYear()
+    </script>
+  </body>
+</html>
