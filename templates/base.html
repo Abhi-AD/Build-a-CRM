@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,8 +25,6 @@
         &copy; <span id="date"></span> CRM App
       </p>
     </footer>
-    <script>
-      document.getElementById('date').innerHTML = new Date().getFullYear()
-    </script>
+    <script src="{% static 'js/main.js' %}"></script>
   </body>
 </html>
