@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from apps.leads.models import Lead, Agent
 from apps.leads.forms import LeadForm, LeadModelForm, CustomUserCreationForm
 from django.views import generic
+from apps.agents.mixins import OrganisorAndLoginRequiredMixin
 
 
 # custom authentication
@@ -33,7 +34,7 @@ class LeadDetailView(LoginRequiredMixin, generic.DetailView):
     context_object_name = "lead"
 
 
-class LeadCreateView(LoginRequiredMixin, generic.CreateView):
+class LeadCreateView(OrganisorAndLoginRequiredMixin, generic.CreateView):
     template_name = "leads/create-lead.html"
     form_class = LeadModelForm
 
@@ -54,7 +55,7 @@ class LeadCreateView(LoginRequiredMixin, generic.CreateView):
         return super(LeadCreateView, self).form_valid(form)
 
 
-class LeadUpdateView(LoginRequiredMixin, generic.UpdateView):
+class LeadUpdateView(OrganisorAndLoginRequiredMixin, generic.UpdateView):
     template_name = "leads/lead-update.html"
     queryset = Lead.objects.all()
     form_class = LeadModelForm
@@ -63,7 +64,7 @@ class LeadUpdateView(LoginRequiredMixin, generic.UpdateView):
         return reverse("leads:lead_list")
 
 
-class LeadDeleteView(LoginRequiredMixin, generic.DeleteView):
+class LeadDeleteView(OrganisorAndLoginRequiredMixin, generic.DeleteView):
     template_name = "leads/lead-delete.html"
     queryset = Lead.objects.all()
 
