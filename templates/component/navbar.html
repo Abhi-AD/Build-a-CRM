@@ -5,7 +5,7 @@
       {% if not request.user.is_authenticated %}
         <a href="{% url 'signup' %}" class="mr-5 hover:text-gray-900">Signup</a>
       {% else %}
-        <a class="mr-5 hover:text-gray-900">Agents</a>
+        <a href="{% url 'agents:agent_list' %}" class="mr-5 hover:text-gray-900">Agents</a>
         <a href="{% url 'leads:lead_list' %}" class="mr-5 hover:text-gray-900">Leads</a>
       {% endif %}
     </nav>
