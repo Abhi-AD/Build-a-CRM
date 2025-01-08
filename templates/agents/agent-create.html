@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load tailwind_filters %}
 {% block title %}
   Agent List
 {% endblock %}
@@ -14,7 +14,7 @@
     <h1 class="text-4xl text-gray-800">Create a new agent</h1>
     <form method="post">
       {% csrf_token %}
-      {{ form.as_p }}
+      {{ form|crispy }}
       <button type="submit" class="w-full text-white bg-blue-500 hover:bg-blue-600 px-3 py-2 rounded-md">Submit</button>
     </form>
   </div>
