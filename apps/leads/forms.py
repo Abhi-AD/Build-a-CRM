@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from apps.leads.models import Lead, Agent
+from apps.leads.models import Lead, Agent, Category
 from django.contrib.auth.forms import UserCreationForm, UsernameField
 
 User = get_user_model()
@@ -33,3 +33,9 @@ class AssignAgentForm(forms.Form):
         agents = Agent.objects.filter(organisation=request.user.userprofile)
         super(AssignAgentForm, self).__init__(*args, **kwargs)
         self.fields["agent"].queryset = agents
+
+
+class CategoryModelForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ("name",)
