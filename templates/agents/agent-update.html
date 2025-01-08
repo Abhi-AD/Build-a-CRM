@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load tailwind_filters %}
 {% block title %}
   Agent Update
 {% endblock %}
-
 {% block content %}
   <section class="text-gray-700 body-font overflow-hidden">
     <div class="container px-5 py-24 mx-auto">
@@ -18,7 +17,7 @@
           </div>
           <form form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ form|crispy }}
             <button type="submit" class="w-full text-white bg-blue-500 hover:bg-blue-600 px-3 py-2 rounded-md">Submit</button>
           </form>
           <div class="mt-5 py-5 border-t border-gray-200">
